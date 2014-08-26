@@ -5,3 +5,5 @@ lib*
 pyvenv.cfg
 
 nltk_data
+
+__pycache__
