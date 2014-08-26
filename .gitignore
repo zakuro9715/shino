@@ -1,0 +1,7 @@
+# pyvenv 
+bin
+include
+lib*
+pyvenv.cfg
+
+nltk_data
