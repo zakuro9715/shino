@@ -37,5 +37,5 @@ class Tree(object):
     def children(self):
         return self._children
 
-from shino.parser.ll1 import LL1Parser
+from shino.parser.recursivedescent import RecursiveDescentParser
 

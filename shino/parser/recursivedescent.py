@@ -2,20 +2,20 @@ from shino import grammar
 from shino.grammar import Token, TokenType
 from shino.parser import Parser, Tree
 
-class LL1Parser(Parser):
+class RecursiveDescentParser(Parser):
     @classmethod
     def make_sample(cls):
-        return LL1Parser(grammar.sample_grammar)
+        return RecursiveDescentParser(grammar.sample_grammar)
 
     def parse(self, tokens):
         '''
-        >>> p = LL1Parser(grammar.sample_grammar)
+        >>> p = RecursiveDescentParser(grammar.sample_grammar)
         >>> p.parse('the cat likes a dog'.split())
         Tree('S', (Tree('NP', (Tree('Det', (Tree('the', ()),)), Tree('N', (Tree('cat', ()),)))), Tree('VP', (Tree('V', (Tree('likes', ()),)), Tree('NP', (Tree('Det', (Tree('a', ()),)), Tree('N', (Tree('dog', ()),))))))))
         >>> p.parse('a dog likes the dog'.split())
         Tree('S', (Tree('NP', (Tree('Det', (Tree('a', ()),)), Tree('N', (Tree('dog', ()),)))), Tree('VP', (Tree('V', (Tree('likes', ()),)), Tree('NP', (Tree('Det', (Tree('the', ()),)), Tree('N', (Tree('dog', ()),))))))))
         '''
-                
+
         tree = self._match_rule('S', tokens)
         if not tree:
             raise ValueError("Don't match any rules")
