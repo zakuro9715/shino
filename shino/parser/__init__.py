@@ -38,4 +38,4 @@ class Tree(object):
         return self._children
 
 from shino.parser.recursivedescent import RecursiveDescentParser
-
+from shino.parser.shiftreduce import ShiftReduceParser
