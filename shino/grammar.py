@@ -104,6 +104,15 @@ def parse_string(text):
 
     return CFG(rules)
 
+sample_grammar = parse_string('''
+S -> NP VP
+NP -> Det N
+N -> "cat" | "dog"
+Det -> "the" | "a"
+VP -> V NP
+V -> "likes"
+''')
+
 
 if __name__ == '__main__':
     import doctest

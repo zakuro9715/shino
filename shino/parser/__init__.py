@@ -30,3 +30,6 @@ class Tree(object):
     @property
     def children(self):
         return self._children
+
+from shino.parser.ll1 import LL1Parser
+
