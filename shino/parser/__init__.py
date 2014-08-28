@@ -26,8 +26,8 @@ class Tree(object):
     def __str__(self):
         t = ' '.join([str(c)[:] for c in self.children])
         if t:
-            return '({0} ({1}))'.format(self.label, t)
-        return "('{0}')".format(self.label)
+            return '({0} {1})'.format(self.label, t)
+        return "'{0}'".format(self.label)
 
     @property
     def label(self):
