@@ -5,5 +5,6 @@ lib*
 pyvenv.cfg
 
 nltk_data
+joiss
 
 __pycache__

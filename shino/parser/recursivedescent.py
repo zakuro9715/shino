@@ -33,7 +33,7 @@ class RecursiveDescentParser(Parser):
                     m = self._match(r, tokens)
                     children.append(m)
                     if not m:
-                        raise ValueError('{0} expected but {1} found'.format(r.surface, tokens[0] if len(tokens) else 'EOF'))
+                        raise ValueError('{0} expected but {1} found'.format(r.surface, tokens[0] if tokens else 'EOF'))
                 else:
                     return Tree(rule_name, children)
         return None
@@ -42,9 +42,12 @@ class RecursiveDescentParser(Parser):
     def _match(self, rule, tokens):
         if rule.type == TokenType.nonterminal:
             return self._match_rule(rule.surface, tokens)
-       
-        if len(tokens) and rule.surface == tokens[0]:
+
+        if tokens and rule.surface == tokens[0]:
             return Tree(tokens.pop(0), tuple())
+        
+        if not tokens and rule.type == TokenType.terminal and rule.surface == '':
+            return Tree('', tuple())
         return None
 
 
